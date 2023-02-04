@@ -1,13 +1,12 @@
-const axios = require("axios").default;
+import axios from "axios";
 
-const getCountries = () =>
-  axios
+const getCountries = () => {
+  return axios
     .get("https://restcountries.com/v3.1/all")
-    .then((response) => {
-      console.log(response);
-    })
+    .then((response) => response.data)
     .catch((error) => {
       console.log(error);
     });
+};
 
 export { getCountries };

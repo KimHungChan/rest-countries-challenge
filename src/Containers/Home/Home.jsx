@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { getCountries } from "../../Api/api";
-import countryData from "../../Api/responseData";
 import Filter from "../../Components/Filter/Filter";
 import Navbar from "../../Components/Navbar/Navbar";
 import SearchBar from "../../Components/SearchBar/SearchBar";
@@ -15,8 +14,8 @@ const Home = () => {
 
   useEffect(() => {
     const awaitCountries = async () => {
-      await getCountries().then((result) => {
-        setCountries(result);
+      await getCountries().then((res) => {
+        setCountries(res);
       });
     };
     awaitCountries();
@@ -43,24 +42,14 @@ const Home = () => {
   console.log("🚀 ~ file: Home.jsx:44 ~ Home ~ searchValue", searchValue);
 
   const filteredCountryData = searchValue
-    ? countryData.filter((country) => {
-        // console.log(
-        //   "🚀 ~ file: Home.jsx:50 ~ ?countryData.filter ~ country.name.common.toLowerCase()",
-        //   country.name.common.toLowerCase()
-        // );
-        // console.log(
-        //   "🚀 ~ file: Home.jsx:50 ~ ?countryData.filter ~ country.name.common.toLowerCase().includes(searchValue)",
-        //   country.name.common
-        //     .toLowerCase()
-        //     .includes(searchValue.toLocaleLowerCase())
-        // );
+    ? countries.filter((country) => {
         return searchValue.toLowerCase() === ""
           ? country
           : country.name.common
               .toLowerCase()
               .includes(searchValue.toLocaleLowerCase());
       })
-    : countryData;
+    : countries;
 
   console.log(
     "🚀 ~ file: Home.jsx:44 ~ Home ~ filteredCountryData",
