@@ -1,0 +1,27 @@
+@import "./Styles/global-colors.scss";
+
+html {
+  height: 100%;
+  --bg1: #{$very-light-grey};
+  --bg2: white;
+  --bg-panel: #ebebeb;
+  --color-headings: #0077ff;
+  --color-text: black;
+  --search-bar-text: #c4c4c4;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+html[data-theme="dark"] {
+  --bg1: #{$very-dark-blue-dark};
+  --bg2: #{$dark-blue};
+  --bg-panel: #434343;
+  --color-headings: #3694ff;
+  --color-text: white;
+  --search-bar-text: white;
+}
+
+body {
+  background-color: var(--bg1);
+  margin: 0;
+  padding: 0;
+}

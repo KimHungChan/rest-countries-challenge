@@ -1,0 +1,15 @@
+.countries-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: 55px;
+  margin-right: 55px;
+  gap: 75px;
+}
+
+@media (min-width: 375px) {
+  .countries-container {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+}
