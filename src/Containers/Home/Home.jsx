@@ -4,6 +4,7 @@ import Filter from "../../Components/Filter/Filter";
 import Navbar from "../../Components/Navbar/Navbar";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import Countries from "../Countries/Countries";
+import CountryPage from "../CountryPage/CountryPage";
 import "./Home.scss";
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [regionFilter, setRegionFilter] = useState(null);
   const [searchValue, setSearchValue] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
 
   useEffect(() => {
     const awaitCountries = async () => {
@@ -39,7 +41,9 @@ const Home = () => {
     setSearchValue(event.target.value);
   };
 
-  console.log("🚀 ~ file: Home.jsx:44 ~ Home ~ searchValue", searchValue);
+  const onCountryClick = (name) => {
+    setSelectedCountry(name);
+  };
 
   const filteredCountryData = searchValue
     ? countries.filter((country) => {
@@ -51,26 +55,39 @@ const Home = () => {
       })
     : countries;
 
-  console.log(
-    "🚀 ~ file: Home.jsx:44 ~ Home ~ filteredCountryData",
-    filteredCountryData
-  );
+  const onBackClicked = () => {
+    setSelectedCountry("");
+  };
+
   return (
     <div>
       <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
-      <div className="search-filter-container">
-        <SearchBar darkMode={darkMode} onChange={onSearch}></SearchBar>
-        <Filter onRegionChange={onRegionChange} />
-      </div>
-      <Countries
-        countries={
-          regionFilter
-            ? filteredCountryData.filter(
-                (country) => country.region === regionFilter
-              )
-            : filteredCountryData
-        }
-      ></Countries>
+      {selectedCountry ? (
+        <CountryPage
+          country={selectedCountry}
+          onBackClicked={onBackClicked}
+          countryData={countries.find(
+            (country) => country.name.common === selectedCountry
+          )}
+        />
+      ) : (
+        <>
+          <div className="search-filter-container">
+            <SearchBar darkMode={darkMode} onChange={onSearch}></SearchBar>
+            <Filter onRegionChange={onRegionChange} />
+          </div>
+          <Countries
+            countries={
+              regionFilter
+                ? filteredCountryData.filter(
+                    (country) => country.region === regionFilter
+                  )
+                : filteredCountryData
+            }
+            onCountryClick={onCountryClick}
+          ></Countries>
+        </>
+      )}
     </div>
   );
 };

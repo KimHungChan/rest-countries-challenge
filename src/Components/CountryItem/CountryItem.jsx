@@ -3,9 +3,9 @@ import "./CountryItem.scss";
 
 import React from "react";
 
-const CountryItem = ({ name, population, region, capital, src }) => {
+const CountryItem = ({ name, population, region, capital, src, onClick }) => {
   return (
-    <div className="container">
+    <div className="container" onClick={() => onClick(name)}>
       <div className="image-container">
         <img crossorigin="anonymous" src={src} alt="" />
       </div>

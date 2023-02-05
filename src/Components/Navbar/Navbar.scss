@@ -7,6 +7,7 @@
   color: var(--color-text);
   display: flex;
   justify-content: space-between;
+  margin-bottom: 40px;
 
   h1 {
     font-family: "Nunito Sans";
@@ -42,17 +43,21 @@
   }
 
   @media (min-width: 375px) {
-    h1 {
-      font-size: 24px;
-      margin-left: 5rem;
-    }
+    .navbar {
+      margin-bottom: 40px;
 
-    .dark-mode-container {
-      margin-right: 5rem;
-      width: 108px;
+      h1 {
+        font-size: 24px;
+        margin-left: 5rem;
+      }
 
-      button {
-        font-size: 16px;
+      .dark-mode-container {
+        margin-right: 5rem;
+        width: 108px;
+
+        button {
+          font-size: 16px;
+        }
       }
     }
   }

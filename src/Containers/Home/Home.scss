@@ -1,5 +1,9 @@
 @import "../../Styles/global-colors.scss";
 
+* {
+  font-family: "Nunito Sans", sans-serif;
+}
+
 .light-mode {
   background-color: var($very-light-grey);
   color: #333;

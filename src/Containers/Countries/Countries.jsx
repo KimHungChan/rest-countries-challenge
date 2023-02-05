@@ -3,7 +3,7 @@ import "./Countries.scss";
 
 import React from "react";
 
-const Countries = ({ countries }) => {
+const Countries = ({ countries, onCountryClick }) => {
   return (
     <div className="countries-container">
       {countries.map((country, key) => (
@@ -14,6 +14,7 @@ const Countries = ({ countries }) => {
           capital={country?.capital?.[0]}
           src={country?.flags.png}
           key={key}
+          onClick={onCountryClick}
         ></CountryItem>
       ))}
     </div>
