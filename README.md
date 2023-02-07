@@ -8,6 +8,9 @@
 ### Dark Mode
 <img src="./src/Resources/rest-countries-preview-dark.png">
 
+### Live link
+https://rest-countries-mchan.netlify.app/
+
 ## Setup
 
 In the project directory, you should run:
