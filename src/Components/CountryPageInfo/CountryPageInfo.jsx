@@ -53,17 +53,18 @@ const CountryPageInfo = ({
           </p>
         </div>
       </div>
-
-      <div className="border-countries-container">
-        <h2>Border Countries:</h2>
-        <div className="border-names-container">
-          {borderCountryCodesToNames(borderCountries).map((region) => (
-            <div>
-              <p>{region}</p>
-            </div>
-          ))}
+      {borderCountries && (
+        <div className="border-countries-container">
+          <h2>Border Countries:</h2>
+          <div className="border-names-container">
+            {borderCountryCodesToNames(borderCountries)?.map((region) => (
+              <div>
+                <p>{region}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

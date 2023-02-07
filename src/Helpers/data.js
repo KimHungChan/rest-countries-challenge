@@ -13,7 +13,7 @@ export const concatLanguages = (languages) => {
 export const borderCountryCodesToNames = (codes) => {
   const getCountryISO2 = require("country-iso-3-to-2");
   const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
-  return codes.map((countryCode) =>
+  return codes?.map((countryCode) =>
     regionNames.of(getCountryISO2(countryCode))
   );
 };
